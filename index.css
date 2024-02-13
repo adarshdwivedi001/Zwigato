@@ -1,14 +1,16 @@
-/* *{
-    box-sizing: border-box;
-    padding: 0;
-    /* margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+*{
+    /* box-sizing: border-box; */
+    /* padding: 0; */
+    /* margin: 0; */
+    font-family: 'Nunito', sans-serif;
  }
-  */
+ 
 
 .header{
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
 }
 
 .nav-items{
@@ -39,14 +41,14 @@
   height: 420px;
   padding: 5px;
   margin:5px;
-  background-color: #f0f0f0;
   border-radius: 8px;
   box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
 }
 
 .res-card:hover{
   cursor: pointer;
-  border: 2px solid black;
+  border: 2px solid rgb(213, 208, 208);
+
 }
 
 .res-logo{
@@ -101,4 +103,13 @@
 
 .login:hover {
   background-color: #0056b3; /* Darker blue on hover */
+}
+
+:link{
+  text-decoration: none;
+  color: black;
+}
+
+:visited{
+  color: black;
 }
