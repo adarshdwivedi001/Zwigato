@@ -113,3 +113,9 @@
 :visited{
   color: black;
 }
+
+.user-card{
+  padding: 10px; 
+  text-align: center;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+}
