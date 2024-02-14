@@ -1,22 +1,25 @@
 import React from "react"
 import UserClass from "./UserClass"
 import User from "./User"
+import useOnlineStatus from "../utils/useOnlineStatus"
 
-class About extends React.Component {
-    constructor(props){
-        super(props)
-    }
-    
-    render(){
+const About = () => {
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false){
         return(
-            <div>
-                <h1>About</h1>
-                <h2>This is Zwigato</h2>
-                <UserClass/>
-                <User/>
-            </div>
+            <h1>Looks like you're offline!! Please check you Internet Connection</h1>
         )
     }
+
+    return(
+        <div>
+            <h1>About</h1>
+            <h2>This is Zwigato</h2>
+            <UserClass />
+            <User />
+        </div>
+    )
 }
 
 export default About
