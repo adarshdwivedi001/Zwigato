@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
-import ResCard from "./ResCard";
+import React, { useEffect, useState, useContext } from "react";
+import ResCard, { withDiscountLabel } from "./ResCard";
 import { Link } from "react-router-dom";
-import { Shimmer } from "./Shimmer";
+import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { RES_API } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterRestaurants, setFilterRestaurants] = useState([]);
+  const { loggedInUser ,setUserName } = useContext(UserContext);
+  
+  const ResCardDiscount = withDiscountLabel(ResCard);
 
   useEffect(() => {
     fetchData();
@@ -35,6 +39,7 @@ const Body = () => {
     );
   }
 
+
   // conditioanl randering
   return restaurants.length === 0 ? (
     <Shimmer />
@@ -52,7 +57,7 @@ const Body = () => {
             }}
           />
           <button
-            className=" px-4 py-2 bg-[#0071ce] text-white m-4 rounded-xl hover:scale-110 hover:bg-[#ffc220]  duration-300 "
+            className=" px-4 py-2 bg-[#0071ce] text-white m-4 rounded-xl hover:scale-110 hover:bg-[#ffc220]  transition-transform "
             onClick={() => {
               const searchRes = restaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -65,7 +70,7 @@ const Body = () => {
         </div>
         <div className="m-4 p-4 items-center">
           <button
-            className="filter-btn px-4 py-2 bg-[#0071ce] text-white m-4 rounded-xl hover:scale-110 hover:bg-[#ffc220]  duration-300"
+            className="filter-btn px-4 py-2 bg-[#0071ce] text-white m-4 rounded-xl hover:scale-110 hover:bg-[#ffc220]  transition-transform"
             onClick={() => {
               const ratedRes = restaurants.filter(
                 (res) => res.info.avgRating > 4.3
@@ -76,11 +81,27 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="m-4 p-8 items-center">
+          <label className="text-lg font-semibold">User Name:</label>
+          <input
+            className="px-4 py-2 ml-6  rounded-xl"
+            type="text"
+            placeholder="Enter User Name"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap justify-center">
         {filterRestaurants.map((resto) => (
           <Link key={resto.info.id} to={"/restaurants/" + resto.info.id}>
-            <ResCard resData={resto} />
+            {resto.info.aggregatedDiscountInfoV3 ? (
+              <ResCardDiscount resData={resto} />
+            ) : (
+              <ResCard resData={resto} />
+            )}
           </Link>
         ))}
       </div>

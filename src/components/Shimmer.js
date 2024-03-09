@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-export const Shimmer = () => {
+const Shimmer = () => {
     return(
         <div className="shimmer-container">
             <div className="shimmer-card"></div>
@@ -16,4 +16,4 @@ export const Shimmer = () => {
     );
 };
 
-export default Shimmer
+export default Shimmer;
