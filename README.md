@@ -1,13 +1,14 @@
 # Core React
 
 # Parcel
+
 - Dev Build
 - Local Server
 - HMR (Hot Module Replacement)
 - File Watching Algorithm - written in C++
 - Caching - Faster Builds
 - Image Optimization
-- Minification 
+- Minification
 - Bundling
 - Compressing
 - Consistent Hashing
@@ -30,3 +31,12 @@ import component from "path"
 
 export const component = () => {}
 import {component} from "path"
+
+# Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our Store
+- Connect our Store to our App // Make a Bridge
+- Create a Slice (Cart)
+- Dispatch (action)
+- Selector

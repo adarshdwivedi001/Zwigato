@@ -11,7 +11,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filterRestaurants, setFilterRestaurants] = useState([]);
   const { loggedInUser ,setUserName } = useContext(UserContext);
-  
+
   const ResCardDiscount = withDiscountLabel(ResCard);
 
   useEffect(() => {
