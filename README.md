@@ -40,3 +40,19 @@ import {component} from "path"
 - Create a Slice (Cart)
 - Dispatch (action)
 - Selector
+
+# Type of Testing (developer)
+
+- Unit testing
+- Intergration testing
+- End to end testing
+
+# Setting up testing in our App
+
+- Install React testing library
+- Install jest
+- Install Babel dependencies
+- Configure Babel
+- Configure Parcel config file to disable default babel transpilation
+- Jest configuration --> npx jest --init
+- install jsdom library
